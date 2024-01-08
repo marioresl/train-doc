@@ -11,6 +11,10 @@ class Course extends Model
 
     protected static $unguarded = true;
 
+    protected $casts = [
+        'date' => 'datetime'
+    ];
+
     public function users()
     {
         return $this->belongsToMany(User::class);

@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\User;
+use App\Models\UserSession;
 use Illuminate\Http\Request;
+use Prometa\Sleek\Facades\Sleek;
+use DB;
 
 class CourseController extends Controller
 {
@@ -14,7 +17,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::orderBy('created_at', 'desc')->get();
+        $courses = Course::orderBy('created_at', 'desc')->withCount('users')->get();
 
         return view('courses.index', compact('courses'));
     }
@@ -33,15 +36,34 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        $course = Course::create([
-            'name' => $request->name,
-            'date' => $request->date,
-            'duration' => $request->duration
-        ]);
+        try{
+            DB::transaction(function () use ($request)  {
+                $course = Course::create([
+                    'name' => $request->name,
+                    'date' => $request->date,
+                    'duration' => $request->duration
+                ]);
 
-        if ($course) {
-            $course->users()->sync($request->users);
+                if ($course) {
+                    $course->users()->sync($request->users);
+                }
+
+                foreach ($request->users as $userId) {
+                    UserSession::create([
+                        'user_id' => $userId,
+                        'hours' => $request->duration,
+                        'date' => $request->date,
+                        'type' => 'claim'
+                    ]);
+                }
+            });
+            Sleek::raise('Die Einheit wurde erstellt und bei allen Mitgleidern wurden die Stunden abgezogen.', 'success');
+        }catch (\Exception $e){
+            info($e);
+            Sleek::raise('Fehlgeschalgen!', 'danger');
         }
+
+        return redirect()->route('admin.courses.index');
     }
 
     /**

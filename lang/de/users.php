@@ -8,6 +8,7 @@ return [
         'email' => 'E-Mail',
         'actions' => 'Aktionen',
         'role' => 'Rolle',
+        'available_sessions' => 'Verfügbar'
     ],
     'table' => [
         'titel' => 'Benutzer'

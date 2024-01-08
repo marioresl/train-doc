@@ -60,15 +60,15 @@ class User extends Authenticatable
 
     public function getAvailableSessionsAttribute()
     {
-        $sessions = $this->sessions; // Holt alle Sessions des Users
+        $sessions = $this->sessions;
 
         $availableSessions = 0;
 
         foreach ($sessions as $session) {
             if ($session->type == 'receive') {
-                $availableSessions += 1;
+                $availableSessions += $session->hours;
             } elseif ($session->type == 'claim') {
-                $availableSessions -= 1;
+                $availableSessions -= $session->hours;
             }
         }
 

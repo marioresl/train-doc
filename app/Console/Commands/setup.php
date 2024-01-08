@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
-use Database\Factories\UserFactory;
 
 class setup extends Command
 {
