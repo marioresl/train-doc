@@ -17,7 +17,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::orderBy('created_at', 'desc')->withCount('users')->get();
+        $courses = Course::orderBy('created_at', 'desc')->withCount('users')->with('users.personalData')->get();
 
         return view('courses.index', compact('courses'));
     }
@@ -69,9 +69,12 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Course $course)
     {
-        //
+        $course = Course::where('id', $course->id)->withCount('users')->first();
+
+        return view('courses.show',compact('course'));
+
     }
 
     /**

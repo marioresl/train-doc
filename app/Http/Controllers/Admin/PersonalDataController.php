@@ -3,45 +3,57 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\PersonalData;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Prometa\Sleek\Facades\Sleek;
 
-class UsersController extends Controller
+class PersonalDataController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $users = User::with('sessions')->autoSort()->autoPaginate(20);
-
-        return view('users.index',compact('users'));
+        //
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(User $user)
     {
-        //
+        return view('personalData.create', compact('user'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
+        try{
+            PersonalData::create([
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'phone' => $request->phone,
+                'address' => $request->addresse,
+                'user_id' => $user->id
+            ]);
+            Sleek::raise('Persönliche Daten erfolgreich gespeichert!', 'success');
+        }catch(\Exception $e){
+            info($e);
+            Sleek::raise('Fehlgeschlagen', 'danger');
+        }
+        return redirect()->route('home');
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show(string $id)
     {
-        $user->load('personalData');
-        return view('users.show', compact('user'));
+        //
     }
 
     /**

@@ -16,6 +16,9 @@
                                 <p class="card-text">Datum: {{ $course->date->format('d.m.Y') }}</p>
                                 <p class="card-text">Teilnehmer: {{ $course->users_count }}</p>
                             </div>
+                            <div class="card-footer d-flex justify-content-center">
+                                <a class="btn btn-secondary w-100 mx-2" href="{{route('admin.courses.show', $course)}}">Details</a>
+                            </div>
                         </div>
                     </div>
             @endforeach
