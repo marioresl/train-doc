@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserSession;
 use Illuminate\Http\Request;
 use Prometa\Sleek\Facades\Sleek;
 
@@ -41,7 +42,8 @@ class UsersController extends Controller
     public function show(User $user)
     {
         $user->load('personalData');
-        return view('users.show', compact('user'));
+        $sessions = UserSession::where('user_id', $user->id)->with('course')->orderBy('created_at', 'desc')->get();
+        return view('users.show', compact('user','sessions'));
     }
 
     /**

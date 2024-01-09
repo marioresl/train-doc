@@ -26,7 +26,7 @@
         <x-sleek::alert />
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid mx-3">
-                <a class="navbar-brand d-flex align-items-center gap-1" href="{{ url('/') }}">
+                <a class="navbar-brand d-flex align-items-center gap-1" href="{{ url('/home') }}">
                     <img src="{{URL::asset('/img/logo_v2.png')}}" height=56>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

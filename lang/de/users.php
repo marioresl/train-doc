@@ -8,7 +8,7 @@ return [
         'lastname' => 'Nachname',
         'phone' => 'Telefon',
         'addresse' => 'Adresse',
-        'name' => 'Name',
+        'name' => 'Benutzerame',
         'email' => 'E-Mail',
         'actions' => 'Aktionen',
         'role' => 'Rolle',

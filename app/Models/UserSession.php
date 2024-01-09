@@ -11,7 +11,15 @@ class UserSession extends Model
 
     protected static $unguarded = true;
 
+    protected $casts = [
+        'date' => 'datetime'
+    ];
+
     public function users(){
         return $this->belongsTo(User::class);
+    }
+
+    public function course(){
+        return $this->belongsTo(Course::class);
     }
 }

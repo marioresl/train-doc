@@ -3,6 +3,8 @@
 return [
   'fields' => [
       'hours' => 'Stunden',
-      'date' => 'Datum'
+      'date' => 'Datum',
+      'created_at' => 'Erstellungsdatum',
+      'name' => 'Kursname'
   ]
 ];

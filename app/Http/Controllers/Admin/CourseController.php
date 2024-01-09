@@ -53,7 +53,8 @@ class CourseController extends Controller
                         'user_id' => $userId,
                         'hours' => $request->duration,
                         'date' => $request->date,
-                        'type' => 'claim'
+                        'type' => 'claim',
+                        'course_id' => $course->id
                     ]);
                 }
             });

@@ -6,7 +6,7 @@
             <x-slot:header class="bg-white">
                 <a href="{{route('admin.courses.create')}}" class="btn btn-primary">Hinzufügen</a>
             </x-slot:header>
-            <div class="d-flex flex-wrap gap-3">
+            <div class="d-flex flex-wrap justify-content-center gap-3">
             @foreach($courses as $course)
                     <div class="col-md-2 mb-4">
                         <div class="card">
@@ -26,3 +26,4 @@
         </x-sleek::card>
     </x-container>
 @endsection
+
