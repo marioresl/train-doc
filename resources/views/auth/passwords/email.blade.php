@@ -37,7 +37,7 @@
                         <div class="row mb-0">
                             <div class="d-flex justify-content-center">
                                 <button type="submit" class="modern-button">
-                                    Passwort zurücksetzten
+                                    Passwort zurücksetzen
                                 </button>
                             </div>
                         </div>
