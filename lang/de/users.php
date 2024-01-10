@@ -12,7 +12,8 @@ return [
         'email' => 'E-Mail',
         'actions' => 'Aktionen',
         'role' => 'Rolle',
-        'available_sessions' => 'Verfügbar'
+        'available_sessions' => 'Verfügbar',
+        'birthday' => 'Geburtstag'
     ],
     'table' => [
         'titel' => 'Benutzer'

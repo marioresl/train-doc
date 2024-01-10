@@ -6,8 +6,12 @@
             <x-sleek::entity-table
                 key="users"
                 :entities="$users"
-                :columns="['name','email','available_sessions','role','actions']"
+                :columns="['name','personalData.firstname' => ['label'=> __('users.fields.firstname')],'birthday' => ['label'=> __('users.fields.birthday')],'personalData.lastname' => ['label'=> __('users.fields.lastname')],'email','available_sessions','role','actions']"
+                :sortable="['name']"
             >
+                <x-slot:column-birthday bind="$_, $user">
+                    {{isset($user->personalData->birthday) ? $user->personalData->birthday->format('d.m.Y') : ''}}
+                </x-slot:column-birthday>
                 <x-slot:column-role bind="$_, $user">
                     {{implode(', ',$user->getRoleNames()->toArray())}}
                 </x-slot:column-role>

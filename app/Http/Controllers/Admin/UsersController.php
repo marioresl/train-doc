@@ -15,7 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::with('sessions')->autoSort()->autoPaginate(20);
+        $users = User::with('sessions','personalData')->autoSort()->autoPaginate(20);
 
         return view('users.index',compact('users'));
     }
@@ -57,16 +57,21 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->all());
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        try{
+            $user->delete();
+            Sleek::raise('Konto erfolgreich gesperrt!', 'success');
+        }catch (\Exception $e){
+            Sleek::raise('Konto erfolgreich gesperrt!');
+        }
     }
 }

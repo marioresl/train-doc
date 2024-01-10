@@ -7,6 +7,13 @@
 import axios from 'axios';
 window.axios = axios;
 
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.css'
+
+import {Alert} from 'bootstrap'
+window.bootstrap = {Alert}
+
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**

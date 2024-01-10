@@ -11,6 +11,10 @@ class PersonalData extends Model
 
     protected static $unguarded = true;
 
+    protected $casts = [
+        'birthday' => 'date'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

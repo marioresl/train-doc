@@ -35,8 +35,9 @@ class PersonalDataController extends Controller
             PersonalData::create([
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
-                'phone' => $request->phone,
-                'address' => $request->addresse,
+                'phone' => $request->phone ?? null,
+                'address' => $request->addresse ?? null,
+                'birthday' => $request->birthday,
                 'user_id' => $user->id
             ]);
             Sleek::raise('Persönliche Daten erfolgreich gespeichert!', 'success');
