@@ -7,7 +7,7 @@ return [
         'firstname' => 'Vorname',
         'lastname' => 'Nachname',
         'phone' => 'Telefon',
-        'addresse' => 'Adresse',
+        'address' => 'Adresse',
         'name' => 'Benutzerame',
         'email' => 'E-Mail',
         'actions' => 'Aktionen',

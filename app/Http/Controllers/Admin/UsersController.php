@@ -71,7 +71,8 @@ class UsersController extends Controller
             $user->delete();
             Sleek::raise('Konto erfolgreich gesperrt!', 'success');
         }catch (\Exception $e){
-            Sleek::raise('Konto erfolgreich gesperrt!');
+            Sleek::raise('Konto konnte nicht gesperrt werden!', 'danger');
         }
+        return redirect()->back();
     }
 }

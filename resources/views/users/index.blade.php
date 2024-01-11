@@ -6,7 +6,7 @@
             <x-sleek::entity-table
                 key="users"
                 :entities="$users"
-                :columns="['name','personalData.firstname' => ['label'=> __('users.fields.firstname')],'birthday' => ['label'=> __('users.fields.birthday')],'personalData.lastname' => ['label'=> __('users.fields.lastname')],'email','available_sessions','role','actions']"
+                :columns="['name','personalData.firstname' => ['label'=> __('users.fields.firstname')], 'personalData.lastname' => ['label'=> __('users.fields.lastname')] ,'birthday' => ['label'=> __('users.fields.birthday')],'email','available_sessions','role','actions']"
                 :sortable="['name']"
             >
                 <x-slot:column-birthday bind="$_, $user">

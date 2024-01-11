@@ -32,4 +32,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::group(['middleware' => ['auth', 'check.personalData']], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/profil', [App\Http\Controllers\ProfilController::class, 'index'])->name('profil.index');
+    Route::put('/profil', [App\Http\Controllers\ProfilController::class, 'update'])->name('profil.update');
 });
