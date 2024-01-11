@@ -20,7 +20,7 @@
                 <x-sleek::form-field name="lastname" label="{{__('users.fields.lastname')}}" required></x-sleek::form-field>
                 <x-sleek::form-field name="phone" label="{{__('users.fields.phone')}}"></x-sleek::form-field>
                 <x-sleek::form-field name="addresse" label="{{__('users.fields.addresse')}}"></x-sleek::form-field>
-                <x-sleek::form-field name="birthday" type="date" label="{{__('users.fields.birthday')}}"></x-sleek::form-field>
+                <x-sleek::form-field name="birthday" type="date" label="{{__('users.fields.birthday')}}" required></x-sleek::form-field>
                 <x-sleek::form-actions></x-sleek::form-actions>
             </x-sleek::form>
         </x-sleek::card>
